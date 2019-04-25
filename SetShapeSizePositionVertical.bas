@@ -1,4 +1,5 @@
 Attribute VB_Name = "SetShapeSizePositionVertical"
+'设置垂直向上循环shape的宽高和位置
 Sub SetShapeSizePositionVertical()
 
     Dim mSlide As Slide
@@ -10,22 +11,10 @@ Sub SetShapeSizePositionVertical()
     On Error Resume Next
     Err.Clear
     
-    Debug.Print "ActiveWindow Width：" & ActiveWindow.Width
-    Debug.Print "ActiveWindow Height：" & ActiveWindow.Height
-    Debug.Print "ActivePresentation Width：" & ActivePresentation.PageSetup.SlideWidth
-    Debug.Print "ActivePresentation Height：" & ActivePresentation.PageSetup.SlideHeight
-    Debug.Print "------------------------------------------------------"
-    
     Set mSlide = ActiveWindow.View.Slide
-    Debug.Print "Active SlideID：" & mSlide.SlideID
-    Debug.Print "Active SlideIndex：" & mSlide.SlideIndex
-    Debug.Print "Active SlideNumber：" & mSlide.SlideNumber
+    Set mSequence = mSlide.TimeLine.MainSequence
     
-    
-    Debug.Print "Active Selection SlideRange.Count：" & ActiveWindow.Selection.SlideRange.Count
     Debug.Print "Active Selection ShapeRange.Count：" & ActiveWindow.Selection.ShapeRange.Count
-    Debug.Print "------------------------------------------------------"
-    
     If Err <> 0 Then
         MsgBox "Looks like no shape is selected!", vbCritical
         Exit Sub

@@ -1,4 +1,5 @@
 Attribute VB_Name = "SetShapeSizePositionHorizontal"
+'设置水平向左循环shape的宽高和位置
 Sub SetShapeSizePositionHorizontal()
 
     Dim mSlide As Slide
@@ -7,25 +8,13 @@ Sub SetShapeSizePositionHorizontal()
     Const mSlideShowShapeCount = 3 '界面完整显示Shape的个数
     
     
-    On Error Resume Next
+   On Error Resume Next
     Err.Clear
     
-    Debug.Print "ActiveWindow Width：" & ActiveWindow.Width
-    Debug.Print "ActiveWindow Height：" & ActiveWindow.Height
-    Debug.Print "ActivePresentation Width：" & ActivePresentation.PageSetup.SlideWidth
-    Debug.Print "ActivePresentation Height：" & ActivePresentation.PageSetup.SlideHeight
-    Debug.Print "------------------------------------------------------"
-    
     Set mSlide = ActiveWindow.View.Slide
-    Debug.Print "Active SlideID：" & mSlide.SlideID
-    Debug.Print "Active SlideIndex：" & mSlide.SlideIndex
-    Debug.Print "Active SlideNumber：" & mSlide.SlideNumber
+    Set mSequence = mSlide.TimeLine.MainSequence
     
-    
-    Debug.Print "Active Selection SlideRange.Count：" & ActiveWindow.Selection.SlideRange.Count
     Debug.Print "Active Selection ShapeRange.Count：" & ActiveWindow.Selection.ShapeRange.Count
-    Debug.Print "------------------------------------------------------"
-    
     If Err <> 0 Then
         MsgBox "Looks like no shape is selected!", vbCritical
         Exit Sub
